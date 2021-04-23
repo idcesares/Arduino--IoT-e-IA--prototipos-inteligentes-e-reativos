@@ -44,4 +44,6 @@
 - [ ]  Juntando tudo: **Prova de Conceito (POC)**
     - [ ]  Bônus: Github
 
-Script final disponível em: [main.py](main.py)
+Código final em Python disponível em: [main.py](main.py);
+Código base para o Arduíno com CC3000 (Wifi Shield): [blynk_cc3000.ino](blynk_cc3000.ino)
+Código base para o Arduíno com USB/Serial: [blynk_usb.ino](blynk_usb.ino)
