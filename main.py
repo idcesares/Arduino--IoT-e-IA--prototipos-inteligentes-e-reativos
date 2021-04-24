@@ -2,12 +2,11 @@ import tweepy
 import re
 import requests
 from telegram.ext import Updater, MessageHandler, Filters
-from google.cloud import language
-from google.cloud.language import enums
-from google.cloud.language import types
+from google.cloud import language_v1
 from datetime import datetime, timedelta
 from nltk.tokenize import WordPunctTokenizer
 import time
+import json
 
 # Abre e carrega o arquivo com as chaves das APIs
 with open('keys.json') as json_file:
@@ -65,14 +64,10 @@ def clean_tweets(tweet):
 
 # Função para conexão e retorno do sentimento do Tweet analizado
 def get_sentiment_score(tweet):
-    client = language.LanguageServiceClient()
-    document = types\
-               .Document(content=tweet,
-                         type=enums.Document.Type.PLAIN_TEXT)
-    sentiment_score = client\
-                      .analyze_sentiment(document=document)\
-                      .document_sentiment\
-                      .score
+    print("Sentiment")
+    client = language_v1.LanguageServiceClient()
+    document = language_v1.Document(content=tweet, type_= language_v1.Document.Type.PLAIN_TEXT)
+    sentiment_score = client.analyze_sentiment(document=document).document_sentiment.score
     return sentiment_score
 
 # Função para análise dos Tweets
