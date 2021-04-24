@@ -9,11 +9,21 @@ from datetime import datetime, timedelta
 from nltk.tokenize import WordPunctTokenizer
 import time
 
+# Abre e carrega o arquivo com as chaves das APIs
+with open('keys.json') as json_file:
+    keys = json.load(json_file)
+
 # Variáveis Globais para conexão com o Twitter
-ACC_TOKEN = ''
-ACC_SECRET = ''
-CONS_KEY = ''
-CONS_SECRET = ''
+ACC_TOKEN = keys['ACC_TOKEN']
+ACC_SECRET = keys['ACC_SECRET']
+CONS_KEY = keys['CONS_KEY']
+CONS_SECRET = keys['CONS_SECRET']
+
+# Variável Global para conexão com o Blynk
+blynk_key = keys['BLYNK_KEY']
+
+# Variável Global para conexão com o Telegram
+telegram_key = keys['TELEGRAM_KEY']
 
 # Funcão para atuação no Arduino usando o Blynk
 def arduino_action(port):
